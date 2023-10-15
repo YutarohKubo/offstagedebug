@@ -42,8 +42,8 @@ class _VisibilitySurfacePageState extends State<VisibilitySurfacePage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(
-                        width: 50,
-                        height: 50,
+                        width: 100,
+                        height: 100,
                         child: SurfaceWidget(),
                       ),
                       const SizedBox(

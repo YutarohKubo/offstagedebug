@@ -36,14 +36,14 @@ class _OffstageSurfacePageState extends State<OffstageSurfacePage> {
               Offstage(
                 offstage: _offstage,
                 child: Container(
-                  color: Colors.red,
+                  color: Colors.grey,
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const SizedBox(
-                        width: 50,
-                        height: 50,
+                        width: 100,
+                        height: 100,
                         child: SurfaceWidget(),
                       ),
                       const SizedBox(

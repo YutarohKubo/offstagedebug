@@ -10,6 +10,7 @@ import android.view.SurfaceView
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import android.widget.TextView
 import io.flutter.plugin.platform.PlatformView
 
 class MySurfaceView(
@@ -30,9 +31,13 @@ class MySurfaceView(
         mPlayerLayout.layoutParams = lp
 
         mSurfaceView = SurfaceView(context)
-        mSurfaceView.setBackgroundColor(Color.BLACK)
         mSurfaceView.holder.addCallback(this)
+        val textView = TextView(context).apply {
+            text = "Hello World"
+            setTextColor(Color.YELLOW)
+        }
         mPlayerLayout.addView(mSurfaceView)
+        mPlayerLayout.addView(textView)
     }
 
     override fun getView(): View {
