@@ -33,7 +33,7 @@ class MySurfaceView(
         mSurfaceView = SurfaceView(context)
         mSurfaceView.holder.addCallback(this)
         val textView = TextView(context).apply {
-            text = "Hello World"
+            text = "Platform\nText"
             setTextColor(Color.YELLOW)
         }
         mPlayerLayout.addView(mSurfaceView)

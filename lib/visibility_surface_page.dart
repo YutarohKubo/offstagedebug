@@ -9,7 +9,8 @@ class VisibilitySurfacePage extends StatefulWidget {
 }
 
 class _VisibilitySurfacePageState extends State<VisibilitySurfacePage> {
-  bool _visible = true;
+  bool _visibleVirtual = true;
+  bool _visibleHybrid = true;
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +27,20 @@ class _VisibilitySurfacePageState extends State<VisibilitySurfacePage> {
                 onPressed: () {
                   setState(
                     () {
-                      _visible = true;
+                      _visibleVirtual = true;
+                      _visibleHybrid = true;
                     },
                   );
                 },
                 child: const Text('show'),
               ),
               const SizedBox(height: 20),
+              const Text('Virtual display'),
+              const SizedBox(height: 8),
               Visibility(
-                visible: _visible,
+                visible: _visibleVirtual,
                 child: Container(
+                  height: 120,
                   color: Colors.grey,
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
@@ -44,7 +49,7 @@ class _VisibilitySurfacePageState extends State<VisibilitySurfacePage> {
                       const SizedBox(
                         width: 100,
                         height: 100,
-                        child: SurfaceWidget(),
+                        child: SurfaceWidget(virtualDisplay: true),
                       ),
                       const SizedBox(
                         width: 16,
@@ -57,7 +62,45 @@ class _VisibilitySurfacePageState extends State<VisibilitySurfacePage> {
                         onPressed: () {
                           setState(
                             () {
-                              _visible = false;
+                              _visibleVirtual = false;
+                            },
+                          );
+                        },
+                        child: const Text('Hide'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text('Hybrid composition'),
+              const SizedBox(height: 8),
+              Visibility(
+                visible: _visibleHybrid,
+                child: Container(
+                  height: 120,
+                  color: Colors.grey,
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: SurfaceWidget(virtualDisplay: false),
+                      ),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      const Text('Surface!!'),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(
+                            () {
+                              _visibleHybrid = false;
                             },
                           );
                         },

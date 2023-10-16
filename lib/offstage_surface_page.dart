@@ -9,7 +9,8 @@ class OffstageSurfacePage extends StatefulWidget {
 }
 
 class _OffstageSurfacePageState extends State<OffstageSurfacePage> {
-  bool _offstage = false;
+  bool _offstageVirtual = false;
+  bool _offstageHybrid = false;
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +27,20 @@ class _OffstageSurfacePageState extends State<OffstageSurfacePage> {
                 onPressed: () {
                   setState(
                     () {
-                      _offstage = false;
+                      _offstageVirtual = false;
+                      _offstageHybrid = false;
                     },
                   );
                 },
                 child: const Text('show'),
               ),
               const SizedBox(height: 20),
+              const Text('Virtual display'),
+              const SizedBox(height: 8),
               Offstage(
-                offstage: _offstage,
+                offstage: _offstageVirtual,
                 child: Container(
+                  height: 120,
                   color: Colors.grey,
                   margin: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
@@ -44,7 +49,7 @@ class _OffstageSurfacePageState extends State<OffstageSurfacePage> {
                       const SizedBox(
                         width: 100,
                         height: 100,
-                        child: SurfaceWidget(),
+                        child: SurfaceWidget(virtualDisplay: true),
                       ),
                       const SizedBox(
                         width: 16,
@@ -57,7 +62,45 @@ class _OffstageSurfacePageState extends State<OffstageSurfacePage> {
                         onPressed: () {
                           setState(
                             () {
-                              _offstage = true;
+                              _offstageVirtual = true;
+                            },
+                          );
+                        },
+                        child: const Text('Hide'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text('Hybrid composition'),
+              const SizedBox(height: 8),
+              Offstage(
+                offstage: _offstageHybrid,
+                child: Container(
+                  height: 120,
+                  color: Colors.grey,
+                  margin: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        width: 100,
+                        height: 100,
+                        child: SurfaceWidget(virtualDisplay: false),
+                      ),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      const Text('Surface!!'),
+                      const SizedBox(
+                        width: 16,
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(
+                            () {
+                              _offstageHybrid = true;
                             },
                           );
                         },
